@@ -19,7 +19,7 @@ CS333_CFLAGS ?= -DPDX_XV6
 # System Call Tracing
 
 ## Image
-![System Call Tracing](./usertests/2_System_Call _Tracing.jpg)
+![System Call Tracing](./usertests/2_System_Call_Tracing.jpg)
 
 ## syscall.c
 ```c
