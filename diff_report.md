@@ -189,3 +189,12 @@ procdumpP1(struct proc *p, char *state_string)
 }
 #endif
 ```
+
+## proc.h
+```c
+uint start_ticks;
+```
+added in
+```c
+struct proc
+```
