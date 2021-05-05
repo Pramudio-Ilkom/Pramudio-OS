@@ -40,7 +40,7 @@ CS333_CFLAGS ?= -DPDX_XV6
 
 ## First Condition
 ```c
-CS333_PROJECT ?= 0
++CS333_PROJECT ?= 0
 PRINT_SYSCALLS ?= 0
 CS333_CFLAGS ?= -DPDX_XV6
 ```
@@ -48,7 +48,7 @@ CS333_CFLAGS ?= -DPDX_XV6
 
 ## Second Condition
 ```c
-CS333_PROJECT ?= 1
++CS333_PROJECT ?= 1
 PRINT_SYSCALLS ?= 0
 CS333_CFLAGS ?= -DPDX_XV6
 ```
@@ -154,13 +154,6 @@ SYSCALL(halt)
 ```
 
 ## syscall.c
-```c
-#ifdef CS333_P1
-extern int sys_date(void);
-#endif
-```
-added in extern section
-
 
 ```diff
 static int (*syscalls[])(void) = {
