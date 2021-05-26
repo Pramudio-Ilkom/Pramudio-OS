@@ -186,14 +186,6 @@ static char *syscallnames[] = {
 #ifdef CS333_P1
   [SYS_date]    "date",
 #endif
-#ifdef CS333_P2
-  [SYS_getuid]    sys_getuid,
-  [SYS_getgid]    sys_getgid,
-  [SYS_getppid]   sys_getppid,
-  [SYS_setuid]    sys_setuid,
-  [SYS_setgid]    sys_setgid,
-  [SYS_getprocs]  sys_getprocs,
-#endif
 };
 #endif // PRINT_SYSCALLS
 
