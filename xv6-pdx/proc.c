@@ -412,7 +412,7 @@ scheduler(void)
       p->state = RUNNING;
       #ifdef CS333_P2
         p->cpu_ticks_in = ticks;
-      #endif // CS333_P2
+      #endif
       swtch(&(c->scheduler), p->context);
       switchkvm();
 
@@ -455,7 +455,7 @@ sched(void)
   intena = mycpu()->intena;
   #ifdef CS333_P2
     p->cpu_ticks_total += (ticks - p->cpu_ticks_in);
-  #endif // CS333_P2
+  #endif
   swtch(&p->context, mycpu()->scheduler);
   mycpu()->intena = intena;
 }
@@ -583,44 +583,44 @@ kill(int pid)
 void
 procdumpP2P3P4(struct proc *p, char *state_string)
 {
-  uint elapsed = ticks-p->start_ticks;
-  uint elapsedLeft = (elapsed) / 1000;
-  uint elapsedRight = elapsed % 1000;
-  char *zeros = "";
-  char *cpuZeros = "";
-  uint cpuTicksTotal = p->cpu_ticks_total;
-  uint cpuSecond = cpuTicksTotal / 1000;
-  uint cpuMs = cpuTicksTotal % 1000;
-  uint ppid = p->parent ? p->parent->pid : p->pid;
+    uint elapsed = ticks-p->start_ticks;
+    uint elapsedLeft = (elapsed) / 1000;
+    uint elapsedRight = elapsed % 1000;
+    char *zeros = "";
+    char *cpuZeros = "";
+    uint cpuTicksTotal = p->cpu_ticks_total;
+    uint cpuSecond = cpuTicksTotal / 1000;
+    uint cpuMs = cpuTicksTotal % 1000;
+    uint ppid = p->parent ? p->parent->pid : p->pid;
 
-  if (elapsedRight < 10) {
-    zeros = "00";
-  } else if (elapsedRight < 100) {
-    zeros = "0";
-  }
+    if (elapsedRight < 10) {
+      zeros = "00";
+    } else if (elapsedRight < 100) {
+      zeros = "0";
+    }
 
-  if (cpuMs < 10) {
-    cpuZeros = "00";
-  } else if (cpuMs < 100) {
-    cpuZeros = "0";
-  }
+    if (cpuMs < 10) {
+      cpuZeros = "00";
+    } else if (cpuMs < 100) {
+      cpuZeros = "0";
+    }
 
-  cprintf(
-    "\n%d\t%s\t%d\t%d\t%d\t%d.%s%d\t%d.%s%d\t%s\t%d\t", 
-    p->pid, 
-    p->name, 
-    p->uid, 
-    p->gid, 
-    ppid, 
-    elapsedLeft, 
-    zeros, 
-    elapsedRight, 
-    cpuSecond,
-    cpuZeros,
-    cpuMs,
-    state_string, 
-    p->sz
-  );
+    cprintf(
+      "\n%d\t%s\t%d\t%d\t%d\t%d.%s%d\t%d.%s%d\t%s\t%d\t", 
+      p->pid, 
+      p->name, 
+      p->uid, 
+      p->gid, 
+      ppid, 
+      elapsedLeft, 
+      zeros, 
+      elapsedRight, 
+      cpuSecond,
+      cpuZeros,
+      cpuMs,
+      state_string, 
+      p->sz
+    );
 }
 #elif defined(CS333_P1)
 void
