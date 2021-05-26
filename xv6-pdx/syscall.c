@@ -110,6 +110,14 @@ extern int sys_halt(void);
 // internally, the function prototype must be ’int’ not ’uint’ for sys_date()
 extern int sys_date(void);
 #endif // CS333_P1
+#ifdef CS333_P2
+extern int sys_getuid(void);
+extern int sys_getgid(void);
+extern int sys_getppid(void);
+extern int sys_setuid(void);
+extern int sys_setgid(void);
+extern int sys_getprocs(void);
+#endif
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -138,6 +146,14 @@ static int (*syscalls[])(void) = {
 #endif // PDX_XV6
 #ifdef CS333_P1
 [SYS_date]    sys_date,
+#endif
+#ifdef CS333_P2
+[SYS_getuid]    sys_getuid,
+[SYS_getgid]    sys_getgid,
+[SYS_getppid]   sys_getppid,
+[SYS_setuid]    sys_setuid,
+[SYS_setgid]    sys_setgid,
+[SYS_getprocs]  sys_getprocs,
 #endif
 };
 
@@ -169,6 +185,14 @@ static char *syscallnames[] = {
 #endif // PDX_XV6
 #ifdef CS333_P1
   [SYS_date]    "date",
+#endif
+#ifdef CS333_P2
+  [SYS_getuid]    sys_getuid,
+  [SYS_getgid]    sys_getgid,
+  [SYS_getppid]   sys_getppid,
+  [SYS_setuid]    sys_setuid,
+  [SYS_setgid]    sys_setgid,
+  [SYS_getprocs]  sys_getprocs,
 #endif
 };
 #endif // PRINT_SYSCALLS

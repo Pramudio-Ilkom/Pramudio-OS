@@ -29,7 +29,15 @@ int halt(void);
 int date(struct rtcdate*);
 #endif // CS333_P1
 
+#ifdef CS333_P2
+uint getuid(void);
+uint getgid(void);
+uint getppid(void);
 
+int setuid(uint);
+int setgid(uint);
+int getprocs(uint max, struct uproc* table);
+#endif 
 
 // ulib.c
 int stat(char*, struct stat*);
